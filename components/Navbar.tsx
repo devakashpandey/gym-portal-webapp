@@ -186,13 +186,21 @@ export default function Navbar() {
                 <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
                     <Link
                         href="#contact"
-                        className="btn-lime desktop-only"
+                        className="desktop-only"
                         style={{
                             alignItems: "center",
+                            justifyContent: "center",
                             gap: 8,
                             textDecoration: "none",
                             fontSize: 13,
+                            fontWeight: 700,
                             padding: "10px 24px",
+                            background: "#CCFF00",
+                            color: "#0a0a0a",
+                            borderRadius: 50,
+                            textTransform: "uppercase",
+                            whiteSpace: "nowrap",
+                            transition: "all 0.3s",
                         }}
                     >
                         <Phone size={14} />
@@ -276,17 +284,30 @@ export default function Navbar() {
                     </Link>
                 ))}
 
+                {/* Join Now CTA in mobile menu */}
                 <Link
                     href="#contact"
                     onClick={() => setMobileOpen(false)}
-                    className="btn-lime"
                     style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: 8,
                         textDecoration: "none",
-                        textAlign: "center",
+                        fontSize: 15,
+                        fontWeight: 700,
+                        padding: "14px 28px",
+                        background: "#CCFF00",
+                        color: "#0a0a0a",
+                        borderRadius: 50,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.5px",
                         marginTop: 24,
-                        fontSize: 14,
+                        transition: "all 0.3s",
+                        fontFamily: "'Outfit', sans-serif",
                     }}
                 >
+                    <Phone size={16} />
                     Join Now
                 </Link>
             </div>
@@ -307,7 +328,7 @@ export default function Navbar() {
                 />
             )}
 
-            <style jsx>{`
+            <style jsx global>{`
                 .desktop-only {
                     display: inline-flex;
                 }
