@@ -184,11 +184,11 @@ export default function SuccessStories() {
                         display: "grid",
                         gridTemplateColumns: "1fr 1fr",
                         gap: 32,
-                        alignItems: "start",
+                        alignItems: "stretch",
                     }}
                 >
                     {/* Before/After Slider */}
-                    <div>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
                         <div
                             ref={sliderRef}
                             onMouseDown={handleMouseDown}
@@ -200,7 +200,8 @@ export default function SuccessStories() {
                                 position: "relative",
                                 borderRadius: 24,
                                 overflow: "hidden",
-                                aspectRatio: "4/5",
+                                flex: 1,
+                                minHeight: 400,
                                 cursor: "ew-resize",
                                 border: "1px solid rgba(255,255,255,0.08)",
                                 userSelect: "none",
