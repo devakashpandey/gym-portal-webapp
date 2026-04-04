@@ -25,26 +25,6 @@ const faqs = [
         answer:
             "Yes, we have a team of certified personal trainers available for one-on-one sessions. PT sessions can be booked individually or come included with Pro (2/month) and Elite (8/month) memberships.",
     },
-    {
-        question: "Is there parking available?",
-        answer:
-            "We offer free underground parking with over 200 spots for members. There's also bike storage and we're conveniently located near public transit stops.",
-    },
-    {
-        question: "What should I bring for my first visit?",
-        answer:
-            "Just bring a valid photo ID, comfortable workout clothes, and athletic shoes. We provide fresh towels, water stations, and lockers. Showers with premium toiletries are also available.",
-    },
-    {
-        question: "Do you offer group classes?",
-        answer:
-            "We offer 50+ group classes per week including HIIT, Yoga, CrossFit, Boxing, Spin, Pilates, Dance Fitness, and more. Pro members get unlimited classes, while Starter members get 2 per week.",
-    },
-    {
-        question: "What is your cancellation policy?",
-        answer:
-            "All memberships are month-to-month with no long-term contracts. You can cancel anytime with 30 days notice. We also offer a 30-day money-back guarantee for new members.",
-    },
 ];
 
 export default function FAQSection() {

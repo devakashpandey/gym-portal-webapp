@@ -55,6 +55,10 @@ const socials = [
 export default function Footer() {
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
+        // Fallback for some browsers
+        if (typeof document !== 'undefined') {
+            document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+        }
     };
 
     return (

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight, Quote, Star, TrendingUp, Clock, Target } from "lucide-react";
 import SectionHeader from "./ui/SectionHeader";
 
@@ -19,6 +20,8 @@ interface SuccessStory {
     afterGradient: string;
     accentColor: string;
     initials: string;
+    beforeImage?: string;
+    afterImage?: string;
 }
 
 const stories: SuccessStory[] = [
@@ -37,22 +40,26 @@ const stories: SuccessStory[] = [
         afterGradient: "linear-gradient(135deg, #0a2a1a, #1a4a2a, #2a6a3a)",
         accentColor: "#CCFF00",
         initials: "RS",
+        beforeImage: "/images/transformations/rahul-before.png",
+        afterImage: "/images/transformations/rahul-after.png",
     },
     {
-        name: "Priya Patel",
-        age: 32,
-        program: "Strength + Yoga",
-        duration: "8 Months",
-        weightLost: "15 kg",
-        muscleGain: "+12% strength",
-        beforeStats: "78 kg • 35% body fat",
-        afterStats: "63 kg • 20% body fat",
-        quote: "As a working mom, I thought I'd never find time. The flexible schedules and supportive trainers at SUSPENDED proved me wrong. Best decision ever!",
+        name: "Sneha Reddy",
+        age: 26,
+        program: "CrossFit + Endurance",
+        duration: "5 Months",
+        weightLost: "18 kg",
+        muscleGain: "+15% stamina",
+        beforeStats: "85 kg • Sedentary",
+        afterStats: "67 kg • Active lifestyle",
+        quote: "CrossFit was intimidating at first. But the coaches scaled every workout for me. Now I do things I never dreamed of — pull-ups, rope climbs, everything!",
         rating: 5,
-        beforeGradient: "linear-gradient(135deg, #2d1b4e, #1a1333, #0d0a1a)",
-        afterGradient: "linear-gradient(135deg, #1a2a4a, #0d1a3a, #0a1530)",
-        accentColor: "#9B59B6",
-        initials: "PP",
+        beforeGradient: "linear-gradient(135deg, #1a0a0a, #2a1a1a, #3a0a0a)",
+        afterGradient: "linear-gradient(135deg, #0a1a2a, #1a2a3a, #0a2a4a)",
+        accentColor: "#E74C3C",
+        initials: "SR",
+        beforeImage: "/images/transformations/sneha-before.png",
+        afterImage: "/images/transformations/sneha-after.png",
     },
     {
         name: "Arjun Mehta",
@@ -71,20 +78,20 @@ const stories: SuccessStory[] = [
         initials: "AM",
     },
     {
-        name: "Sneha Reddy",
-        age: 26,
-        program: "CrossFit + Endurance",
-        duration: "5 Months",
-        weightLost: "18 kg",
-        muscleGain: "+15% stamina",
-        beforeStats: "85 kg • Sedentary",
-        afterStats: "67 kg • Active lifestyle",
-        quote: "CrossFit was intimidating at first. But the coaches scaled every workout for me. Now I do things I never dreamed of — pull-ups, rope climbs, everything!",
+        name: "Priya Patel",
+        age: 32,
+        program: "Strength + Yoga",
+        duration: "8 Months",
+        weightLost: "15 kg",
+        muscleGain: "+12% strength",
+        beforeStats: "78 kg • 35% body fat",
+        afterStats: "63 kg • 20% body fat",
+        quote: "As a working mom, I thought I'd never find time. The flexible schedules and supportive trainers at SUSPENDED proved me wrong. Best decision ever!",
         rating: 5,
-        beforeGradient: "linear-gradient(135deg, #1a0a0a, #2a1a1a, #3a0a0a)",
-        afterGradient: "linear-gradient(135deg, #0a1a2a, #1a2a3a, #0a2a4a)",
-        accentColor: "#E74C3C",
-        initials: "SR",
+        beforeGradient: "linear-gradient(135deg, #2d1b4e, #1a1333, #0d0a1a)",
+        afterGradient: "linear-gradient(135deg, #1a2a4a, #0d1a3a, #0a1530)",
+        accentColor: "#9B59B6",
+        initials: "PP",
     },
     {
         name: "Vikram Singh",
@@ -220,69 +227,97 @@ export default function SuccessStories() {
                                     padding: 40,
                                 }}
                             >
-                                <div
-                                    style={{
-                                        width: 120,
-                                        height: 120,
-                                        borderRadius: "50%",
-                                        background: `${story.accentColor}20`,
-                                        border: `3px solid ${story.accentColor}`,
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        marginBottom: 24,
-                                        boxShadow: `0 0 40px ${story.accentColor}30`,
-                                    }}
-                                >
-                                    <span
+                                {story.afterImage ? (
+                                    <Image
+                                        src={story.afterImage}
+                                        alt={`${story.name} After`}
+                                        fill
+                                        style={{ objectFit: "cover" }}
+                                    />
+                                ) : (
+                                    <>
+                                        <div
+                                            style={{
+                                                width: 120,
+                                                height: 120,
+                                                borderRadius: "50%",
+                                                background: `${story.accentColor}20`,
+                                                border: `3px solid ${story.accentColor}`,
+                                                display: "flex",
+                                                alignItems: "center",
+                                                justifyContent: "center",
+                                                marginBottom: 24,
+                                                boxShadow: `0 0 40px ${story.accentColor}30`,
+                                                position: "relative",
+                                                zIndex: 2,
+                                            }}
+                                        >
+                                            <span
+                                                style={{
+                                                    fontFamily: "'Outfit', sans-serif",
+                                                    fontSize: 36,
+                                                    fontWeight: 800,
+                                                    color: story.accentColor,
+                                                }}
+                                            >
+                                                {story.initials}
+                                            </span>
+                                        </div>
+                                    </>
+                                )}
+                                
+                                {/* Labels Overlay */}
+                                <div style={{ position: "relative", zIndex: 5, textAlign: "center", pointerEvents: "none" }}>
+                                    <div
                                         style={{
-                                            fontFamily: "'Outfit', sans-serif",
-                                            fontSize: 36,
-                                            fontWeight: 800,
-                                            color: story.accentColor,
+                                            background: "rgba(0,0,0,0.6)",
+                                            backdropFilter: "blur(10px)",
+                                            padding: "10px 20px",
+                                            borderRadius: 12,
+                                            border: "1px solid rgba(255,255,255,0.1)",
                                         }}
                                     >
-                                        {story.initials}
-                                    </span>
-                                </div>
-                                <span
-                                    style={{
-                                        fontSize: 13,
-                                        fontWeight: 700,
-                                        letterSpacing: "2px",
-                                        textTransform: "uppercase",
-                                        color: story.accentColor,
-                                        marginBottom: 8,
-                                    }}
-                                >
-                                    AFTER
-                                </span>
-                                <span
-                                    style={{
-                                        fontFamily: "'Outfit', sans-serif",
-                                        fontSize: 20,
-                                        fontWeight: 700,
-                                        color: "#fff",
-                                        textAlign: "center",
-                                    }}
-                                >
-                                    {story.afterStats}
-                                </span>
-                                <div
-                                    style={{
-                                        marginTop: 12,
-                                        display: "flex",
-                                        gap: 3,
-                                    }}
-                                >
-                                    {[...Array(5)].map((_, i) => (
-                                        <Star
-                                            key={i}
-                                            size={14}
-                                            fill={story.accentColor}
-                                            color={story.accentColor}
-                                        />
-                                    ))}
+                                        <span
+                                            style={{
+                                                fontSize: 11,
+                                                fontWeight: 800,
+                                                letterSpacing: "2px",
+                                                textTransform: "uppercase",
+                                                color: story.accentColor,
+                                                marginBottom: 4,
+                                                display: "block",
+                                            }}
+                                        >
+                                            AFTER
+                                        </span>
+                                        <span
+                                            style={{
+                                                fontFamily: "'Outfit', sans-serif",
+                                                fontSize: 18,
+                                                fontWeight: 700,
+                                                color: "#fff",
+                                            }}
+                                        >
+                                            {story.afterStats}
+                                        </span>
+                                    </div>
+                                    <div
+                                        style={{
+                                            marginTop: 10,
+                                            display: "flex",
+                                            gap: 3,
+                                            justifyContent: "center"
+                                        }}
+                                    >
+                                        {[...Array(5)].map((_, i) => (
+                                            <Star
+                                                key={i}
+                                                size={14}
+                                                fill={story.accentColor}
+                                                color={story.accentColor}
+                                            />
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
 
@@ -301,53 +336,76 @@ export default function SuccessStories() {
                                     transition: isDragging ? "none" : "clip-path 0.1s ease",
                                 }}
                             >
-                                <div
-                                    style={{
-                                        width: 120,
-                                        height: 120,
-                                        borderRadius: "50%",
-                                        background: "rgba(255,255,255,0.05)",
-                                        border: "3px solid rgba(255,255,255,0.15)",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        marginBottom: 24,
-                                    }}
-                                >
-                                    <span
+                                {story.beforeImage ? (
+                                    <Image
+                                        src={story.beforeImage}
+                                        alt={`${story.name} Before`}
+                                        fill
+                                        style={{ objectFit: "cover" }}
+                                    />
+                                ) : (
+                                    <div
                                         style={{
-                                            fontFamily: "'Outfit', sans-serif",
-                                            fontSize: 36,
-                                            fontWeight: 800,
-                                            color: "rgba(255,255,255,0.3)",
+                                            width: 120,
+                                            height: 120,
+                                            borderRadius: "50%",
+                                            background: "rgba(255,255,255,0.05)",
+                                            border: "3px solid rgba(255,255,255,0.15)",
+                                            display: "flex",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            marginBottom: 24,
                                         }}
                                     >
-                                        {story.initials}
-                                    </span>
+                                        <span
+                                            style={{
+                                                fontFamily: "'Outfit', sans-serif",
+                                                fontSize: 36,
+                                                fontWeight: 800,
+                                                color: "rgba(255,255,255,0.3)",
+                                            }}
+                                        >
+                                            {story.initials}
+                                        </span>
+                                    </div>
+                                )}
+
+                                {/* Before Labels Overlay */}
+                                <div style={{ position: "relative", zIndex: 5, textAlign: "center", pointerEvents: "none" }}>
+                                    <div
+                                        style={{
+                                            background: "rgba(0,0,0,0.6)",
+                                            backdropFilter: "blur(10px)",
+                                            padding: "10px 20px",
+                                            borderRadius: 12,
+                                            border: "1px solid rgba(255,255,255,0.1)",
+                                        }}
+                                    >
+                                        <span
+                                            style={{
+                                                fontSize: 11,
+                                                fontWeight: 700,
+                                                letterSpacing: "2px",
+                                                textTransform: "uppercase",
+                                                color: "rgba(255,255,255,0.5)",
+                                                marginBottom: 4,
+                                                display: "block",
+                                            }}
+                                        >
+                                            BEFORE
+                                        </span>
+                                        <span
+                                            style={{
+                                                fontFamily: "'Outfit', sans-serif",
+                                                fontSize: 18,
+                                                fontWeight: 700,
+                                                color: "rgba(255,255,255,0.6)",
+                                            }}
+                                        >
+                                            {story.beforeStats}
+                                        </span>
+                                    </div>
                                 </div>
-                                <span
-                                    style={{
-                                        fontSize: 13,
-                                        fontWeight: 700,
-                                        letterSpacing: "2px",
-                                        textTransform: "uppercase",
-                                        color: "rgba(255,255,255,0.5)",
-                                        marginBottom: 8,
-                                    }}
-                                >
-                                    BEFORE
-                                </span>
-                                <span
-                                    style={{
-                                        fontFamily: "'Outfit', sans-serif",
-                                        fontSize: 20,
-                                        fontWeight: 700,
-                                        color: "rgba(255,255,255,0.6)",
-                                        textAlign: "center",
-                                    }}
-                                >
-                                    {story.beforeStats}
-                                </span>
                             </div>
 
                             {/* Slider Line */}

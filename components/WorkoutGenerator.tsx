@@ -185,98 +185,105 @@ interface WorkoutPlan {
 function generateWorkoutPlan(answers: string[]): WorkoutPlan {
     const [goal, level, days, duration] = answers;
 
+    // Base plans by goal
     const plans: Record<string, WorkoutPlan> = {
         "weight-loss": {
-            title: "Fat Shredder Protocol",
-            tagline: "Torch calories and reveal your shredded physique",
-            program: "HIIT & CrossFit",
-            schedule:
-                days === "2-3"
-                    ? ["Mon: Full Body HIIT", "Wed: Cardio Circuit", "Fri: Core & Conditioning"]
-                    : days === "3-4"
-                        ? ["Mon: Upper HIIT", "Tue: Lower Circuit", "Thu: Full Body Burn", "Sat: Cardio Power"]
-                        : days === "4-5"
-                            ? ["Mon: HIIT Upper", "Tue: Cardio Circuit", "Wed: Rest", "Thu: Lower Burn", "Fri: Full Body HIIT"]
-                            : ["Mon: HIIT", "Tue: Cardio", "Wed: Circuit", "Thu: Active Recovery", "Fri: Tabata", "Sat: Long Run"],
+            title: "Project Zero Fat",
+            tagline: "High-intensity metabolic conditioning to melt fat FAST",
+            program: "Metabolic HIIT & Compound Training",
+            schedule: [], // Will be custom built below
             tips: [
                 "Maintain a calorie deficit of 300-500 cal/day",
                 "Focus on compound movements for max calorie burn",
-                "Include 2-3 cardio sessions per week",
-                "Stay hydrated — aim for 3-4L water daily",
+                "Don't skip cardio days — heat up the engine",
+                "Stay hydrated — aim for 3.5L+ water daily",
             ],
-            intensity: level === "beginner" ? "Moderate" : level === "intermediate" ? "High" : "Extreme",
+            intensity: level === "beginner" ? "Moderate" : level === "intermediate" ? "High" : "Elite High",
             duration: `${duration} min sessions`,
             color: "#FF6B35",
         },
         "muscle-gain": {
-            title: "Hypertrophy Beast Mode",
-            tagline: "Pack on serious size with strategic training splits",
-            program: "Strength Training & Bodybuilding",
-            schedule:
-                days === "2-3"
-                    ? ["Mon: Push (Chest/Shoulders/Tri)", "Wed: Pull (Back/Bi)", "Fri: Legs & Core"]
-                    : days === "3-4"
-                        ? ["Mon: Chest & Triceps", "Tue: Back & Biceps", "Thu: Legs", "Sat: Shoulders & Arms"]
-                        : days === "4-5"
-                            ? ["Mon: Chest", "Tue: Back", "Wed: Rest", "Thu: Shoulders & Arms", "Fri: Legs"]
-                            : ["Mon: Chest", "Tue: Back", "Wed: Legs", "Thu: Shoulders", "Fri: Arms", "Sat: Weak Points"],
+            title: "Titan Mass Protocol",
+            tagline: "Engineered for maximum hypertrophy and raw power",
+            program: "Power-Hypertrophy Split",
+            schedule: [],
             tips: [
-                "Eat in a calorie surplus of 300-500 cal/day",
-                "Get 1.6-2.2g protein per kg body weight",
-                "Progressive overload every session",
-                "Sleep 7-9 hours for optimal recovery",
+                "Calorie surplus is non-negotiable for muscle growth",
+                "Aim for 2g of protein per kg of body weight",
+                "Focus on progressive overload: track every set",
+                "Prioritize sleep: muscles grow while you rest",
             ],
-            intensity: level === "beginner" ? "Moderate" : level === "intermediate" ? "High" : "Extreme",
+            intensity: level === "beginner" ? "Moderate-High" : level === "intermediate" ? "High" : "Ultra High",
             duration: `${duration} min sessions`,
             color: "#CCFF00",
         },
         endurance: {
-            title: "Cardio Warrior Program",
-            tagline: "Build unstoppable stamina and cardiovascular power",
-            program: "Cardio & Endurance",
-            schedule:
-                days === "2-3"
-                    ? ["Mon: Interval Running", "Wed: Cycling + Core", "Fri: Swimming / Rowing"]
-                    : days === "3-4"
-                        ? ["Mon: Intervals", "Tue: Steady State", "Thu: Cross-Training", "Sat: Long Endurance"]
-                        : days === "4-5"
-                            ? ["Mon: Speed Work", "Tue: Endurance Run", "Wed: Rest", "Thu: Cross-Train", "Fri: Tempo Session"]
-                            : ["Mon: Intervals", "Tue: Recovery Run", "Wed: Cross-Train", "Thu: Tempo", "Fri: Hill Training", "Sat: Long Run"],
+            title: "Stamina Forge",
+            tagline: "Relentless conditioning for the ultimate diesel engine",
+            program: "Capacity & Performance Endurance",
+            schedule: [],
             tips: [
-                "Gradually increase distance by 10% weekly",
-                "Incorporate zone 2 training for base building",
-                "Fuel with complex carbs before sessions",
-                "Don't skip recovery days — they build you up",
+                "Weekly distance increase should not exceed 10%",
+                "Fuel heavily with complex carbs before long runs",
+                "Proper warm-up is key for joint longevity",
+                "Recover with electrolytes and dynamic stretching",
             ],
-            intensity: level === "beginner" ? "Low-Moderate" : level === "intermediate" ? "Moderate-High" : "High",
+            intensity: level === "beginner" ? "Moderate" : level === "intermediate" ? "High" : "Pro Level",
             duration: `${duration} min sessions`,
-            color: "#E74C3C",
+            color: "#3498DB",
         },
         flexibility: {
-            title: "Flow & Mobility Protocol",
-            tagline: "Unlock your body's full range and prevent injuries",
-            program: "Yoga & Functional Training",
-            schedule:
-                days === "2-3"
-                    ? ["Mon: Dynamic Yoga Flow", "Wed: Mobility Work", "Fri: Pilates + Stretch"]
-                    : days === "3-4"
-                        ? ["Mon: Vinyasa Flow", "Tue: Foam Rolling + Stretch", "Thu: Mobility Drills", "Sat: Restorative Yoga"]
-                        : days === "4-5"
-                            ? ["Mon: Power Yoga", "Tue: Mobility", "Wed: Rest", "Thu: Pilates", "Fri: Deep Stretch"]
-                            : ["Mon: Vinyasa", "Tue: Mobility", "Wed: Pilates", "Thu: Yin Yoga", "Fri: Functional", "Sat: Restorative"],
+            title: "Zenith Flow Protocol",
+            tagline: "Restore balance, recover faster, and move like water",
+            program: "Yoga-Mobility Hybrid",
+            schedule: [],
             tips: [
-                "Hold static stretches for 30-60 seconds",
-                "Focus on breathing deeply during every movement",
-                "Warm up dynamically before stretching",
-                "Consistency matters more than intensity here",
+                "Hold critical stretches for 45-60 seconds",
+                "Connect every movement with steady nasal breathing",
+                "Use props early on to ensure perfect alignment",
+                "Check for daily muscle tightness before starting",
             ],
-            intensity: level === "beginner" ? "Light" : level === "intermediate" ? "Moderate" : "Moderate-High",
+            intensity: level === "beginner" ? "Light" : level === "intermediate" ? "Flow-High" : "Mobility Pro",
             duration: `${duration} min sessions`,
             color: "#9B59B6",
         },
     };
 
-    return plans[goal] || plans["muscle-gain"];
+    const basePlan = { ...(plans[goal] || plans["muscle-gain"]) };
+
+    // Customized Schedule based on days chosen
+    interface ScheduleMap {
+        [key: string]: { [key: string]: string[] };
+    }
+
+    const scheduleByGoal: ScheduleMap = {
+        "weight-loss": {
+            "2-3": ["Day 1: Full-Body Torch", "Day 2: Cardio Core HIIT", "Day 3: Strength Circuit"],
+            "3-4": ["Mon: Upper Body Burn", "Tue: Lower Body Blast", "Thu: Full Body HIIT", "Sat: Steady Cardio"],
+            "4-5": ["Mon: Upper Burn", "Tue: Lower Blast", "Wed: Recovery Walk", "Thu: Core Power", "Fri: Final Burnout"],
+            "6-7": ["Mon-Sat: Alternating HIIT & Strength", "Sun: Active Recovery Flow"],
+        },
+        "muscle-gain": {
+            "2-3": ["Day 1: Upper Power", "Day 2: Lower Power", "Day 3: Full Body"],
+            "3-4": ["Push Day", "Pull Day", "Leg Day", "Upper Body Accessory"],
+            "4-5": ["Chest", "Back", "Legs", "Shoulders", "Arms (Pump)"],
+            "6-7": ["PPL Split: Mon-Fri", "Sat: Weak Points", "Sun: Strategic Rest"],
+        },
+        "endurance": {
+            "2-3": ["Day 1: Intervals", "Day 2: Steady Run", "Day 3: Long Walk"],
+            "3-4": ["Mon: Speed", "Tue: Endurance", "Thu: Recovery", "Sat: Long Distance"],
+            "4-5": ["Mon: Intervals", "Tue: Tempo", "Wed: Restore", "Thu: Hill Sprints", "Fri: Endurance"],
+            "6-7": ["Daily Performance Cycle: Mon-Sat", "Sun: Low Intensity"],
+        }
+    };
+
+    basePlan.schedule = (scheduleByGoal[goal] && scheduleByGoal[goal][days]) || [
+        "Day 1: Target Muscle Routine",
+        "Day 2: Synergy Routine",
+        "Day 3: Recovery Flow"
+    ];
+
+    return basePlan;
 }
 
 export default function WorkoutGenerator() {
@@ -284,7 +291,9 @@ export default function WorkoutGenerator() {
     const [answers, setAnswers] = useState<string[]>([]);
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
     const [showResult, setShowResult] = useState(false);
+    const [isAnalyzing, setIsAnalyzing] = useState(false);
     const [animating, setAnimating] = useState(false);
+    const [analysisProgress, setAnalysisProgress] = useState(0);
 
     const handleSelect = (optionId: string) => {
         setSelectedOption(optionId);
@@ -301,10 +310,27 @@ export default function WorkoutGenerator() {
                 setCurrentStep(currentStep + 1);
                 setSelectedOption(null);
             } else {
-                setShowResult(true);
+                startAnalysis();
             }
             setAnimating(false);
         }, 300);
+    };
+
+    const startAnalysis = () => {
+        setIsAnalyzing(true);
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += Math.random() * 8;
+            if (progress >= 100) {
+                progress = 100;
+                clearInterval(interval);
+                setTimeout(() => {
+                    setIsAnalyzing(false);
+                    setShowResult(true);
+                }, 500);
+            }
+            setAnalysisProgress(progress);
+        }, 80);
     };
 
     const handleBack = () => {
@@ -326,6 +352,8 @@ export default function WorkoutGenerator() {
             setAnswers([]);
             setSelectedOption(null);
             setShowResult(false);
+            setIsAnalyzing(false);
+            setAnalysisProgress(0);
             setAnimating(false);
         }, 300);
     };
@@ -367,7 +395,7 @@ export default function WorkoutGenerator() {
                 />
 
                 {/* Progress Bar */}
-                {!showResult && (
+                {!showResult && !isAnalyzing && (
                     <div
                         style={{
                             display: "flex",
@@ -409,7 +437,7 @@ export default function WorkoutGenerator() {
                 )}
 
                 {/* Quiz Card */}
-                {!showResult ? (
+                {!showResult && !isAnalyzing ? (
                     <div
                         className="glass-card"
                         style={{
@@ -568,9 +596,76 @@ export default function WorkoutGenerator() {
                                     transition: "all 0.3s",
                                 }}
                             >
-                                {currentStep === quizSteps.length - 1 ? "Get My Plan" : "Next"}
+                                {currentStep === quizSteps.length - 1 ? "Generate Plan" : "Next"}
                                 <ChevronRight size={16} />
                             </button>
+                        </div>
+                    </div>
+                ) : isAnalyzing ? (
+                    <div
+                        className="glass-card"
+                        style={{
+                            borderRadius: 24,
+                            padding: "60px 40px",
+                            textAlign: "center",
+                        }}
+                    >
+                        <div style={{ marginBottom: 32, position: "relative", display: "inline-block" }}>
+                            <div className="loader-ring"></div>
+                            <Sparkles
+                                size={32}
+                                color="#CCFF00"
+                                style={{
+                                    position: "relative",
+                                    animation: "pulse 1.5s infinite"
+                                }}
+                            />
+                        </div>
+                        <h3
+                            style={{
+                                fontFamily: "'Outfit', sans-serif",
+                                fontSize: 24,
+                                fontWeight: 800,
+                                color: "#fff",
+                                marginBottom: 12,
+                            }}
+                        >
+                            Tailoring Your Plan...
+                        </h3>
+                        <p
+                            style={{
+                                fontSize: 14,
+                                color: "rgba(255,255,255,0.4)",
+                                marginBottom: 32,
+                            }}
+                        >
+                            {analysisProgress < 30 ? "Analyzing physical profile..." :
+                                analysisProgress < 60 ? "Optimizing training splits..." :
+                                    analysisProgress < 90 ? "Calibrating volume & intensity..." :
+                                        "Finalizing your protocol..."}
+                        </p>
+
+                        <div
+                            style={{
+                                width: "100%",
+                                maxWidth: 400,
+                                height: 6,
+                                background: "rgba(255,255,255,0.05)",
+                                borderRadius: 10,
+                                margin: "0 auto",
+                                overflow: "hidden",
+                            }}
+                        >
+                            <div
+                                style={{
+                                    width: `${analysisProgress}%`,
+                                    height: "100%",
+                                    background: "linear-gradient(90deg, #CCFF00, #9eff00)",
+                                    boxShadow: "0 0 15px rgba(204, 255, 0, 0.4)",
+                                    borderRadius: 10,
+                                    transition: "width 0.1s linear",
+                                }}
+                            />
                         </div>
                     </div>
                 ) : (
@@ -854,6 +949,27 @@ export default function WorkoutGenerator() {
                     gap: 20px;
                     margin-bottom: 24px;
                 }
+                .loader-ring {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 76px;
+                    height: 76px;
+                    border-radius: 50%;
+                    border: 3px solid rgba(204, 255, 0, 0.05);
+                    border-top-color: #CCFF00;
+                    animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+                }
+                @keyframes spin {
+                    from { transform: translate(-50%, -50%) rotate(0deg); }
+                    to { transform: translate(-50%, -50%) rotate(360deg); }
+                }
+                @keyframes pulse {
+                    0% { transform: scale(1); opacity: 0.8; }
+                    50% { transform: scale(1.1); opacity: 1; }
+                    100% { transform: scale(1); opacity: 0.8; }
+                }
                 @media (max-width: 640px) {
                     .quiz-options-grid {
                         grid-template-columns: 1fr !important;
@@ -862,7 +978,7 @@ export default function WorkoutGenerator() {
                         grid-template-columns: 1fr !important;
                     }
                     .glass-card {
-                        padding: 32px 16px !important;
+                        padding: 32px 20px !important;
                     }
                 }
             `}</style>

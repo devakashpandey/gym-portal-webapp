@@ -6,6 +6,7 @@ import WorkoutShowcase from "@/components/WorkoutShowcase";
 import TrainersSection from "@/components/TrainersSection";
 import BMICalculator from "@/components/BMICalculator";
 import WorkoutGenerator from "@/components/WorkoutGenerator";
+import NutritionPlanner from "@/components/NutritionPlanner";
 import PricingSection from "@/components/PricingSection";
 import SuccessStories from "@/components/SuccessStories";
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -27,6 +28,7 @@ export default function Home() {
       <TrainersSection />
       <BMICalculator />
       <WorkoutGenerator />
+      <NutritionPlanner />
       <PricingSection />
       <SuccessStories />
       <TestimonialsSection />
